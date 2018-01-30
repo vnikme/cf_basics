@@ -35,6 +35,7 @@ def InitAndCreateNets(batch_size, input_size, layer_sizes, output_size):
     for i in xrange(n + 1):
         l = train_net.FC([s, w[i], b[i]], ["l%d" % i])
         if i < n:
+            # Play with nonlinearity used: try Relu and Sigmoid
             s = train_net.Softplus([l], ["s%d" % i])
         else:
             s = train_net.Sigmoid([l], ["s%d" % i])
